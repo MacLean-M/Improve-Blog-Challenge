@@ -14,11 +14,18 @@ namespace SimpleBlog.API
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            //CreateWebHostBuilder(args).Build().Run();
+
+            var build = CreateWebHostBuilder(args)
+                .UseUrls("http://localhost:5001")
+                .Build();
+
+            build.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://localhost:5001")
                 .UseStartup<Startup>();
     }
 }

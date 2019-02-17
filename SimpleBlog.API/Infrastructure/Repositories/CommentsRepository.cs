@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using SimpleBlog.API.Models;
+using Newtonsoft.Json.Linq;
 using static SimpleBlog.API.Infrastructure.WebClient;
 
 namespace SimpleBlog.API.Infrastructure 
@@ -26,7 +25,21 @@ namespace SimpleBlog.API.Infrastructure
         {
             _client.EntityType = EnumEntityType.comments;
             var json = await _client.GetData(postId + "");
-            return JsonConvert.DeserializeObject<List<Comment>>(json);
+
+            var commentList = new List<Comment>();
+
+            foreach (JObject i in JArray.Parse(json))
+            {
+                var jArray = new List<JObject>();
+
+                foreach (JObject j in i.Root)
+                {
+                    var comment = j.ToObject<Comment>();
+                    commentList.Add(comment);
+                }
+            }
+            
+            return commentList;
         }
     }
 }

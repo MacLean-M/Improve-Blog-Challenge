@@ -9,7 +9,6 @@ using SimpleBlog.API.Models;
 
 namespace SimpleBlog.API.Controllers 
 {
-    
     [Route("api/[controller]")]
     [ApiController]
     public class PostsController : ControllerBase 
@@ -19,14 +18,12 @@ namespace SimpleBlog.API.Controllers
             _postsRepo = postsRepo;
         }
 
-        // api/posts
         [HttpGet]
-        public async Task<ActionResult<string>> Get() 
+        public async Task<ActionResult<string>> Get()
         {
             return JsonConvert.SerializeObject(await _postsRepo.GetN<Post>(100));
         }
 
-        // api/posts/1
         [HttpGet("{id}")]
         public async Task<ActionResult<string>> Get(int id) 
         {

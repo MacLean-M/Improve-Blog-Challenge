@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace SimpleBlog.API.Models 
 {
+    [JsonObjectAttribute]
     public class Post 
     {
         [JsonIgnore]

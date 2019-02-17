@@ -19,7 +19,6 @@ namespace SimpleBlog.API.Controllers
             _repo = repo;
         }
 
-        // api/comments/1
         [HttpGet]
         public async Task<ActionResult<string>> Get(int postId) {
             return JsonConvert.SerializeObject(await _repo.GetAll<Comment>(postId));

@@ -53,7 +53,8 @@ namespace SimpleBlog.API
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Posts}/{action=Get}/{id?}"
+                    //template: "{controller=Posts}/{action=Get}/{id?}"
+                    template: "{controller=Posts}/{action=Get}/{id?}/{slug?}"
                 );
                 routes.MapRoute(
                     name: "comments",

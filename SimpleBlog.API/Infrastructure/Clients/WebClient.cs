@@ -29,8 +29,8 @@ namespace SimpleBlog.API.Infrastructure
 
         public async Task<string> GetData(string suffix = "") 
         {
-            var address = "https://jsonplaceholder.typicode.com/" + GetPathFromEntityType() + suffix;
-            
+            var address = "http://jsonplaceholder.typicode.com/" + GetPathFromEntityType() + suffix;
+
             return await _httpClient.GetStringAsync(address);
         }
 

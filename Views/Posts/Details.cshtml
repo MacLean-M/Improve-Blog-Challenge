@@ -1,0 +1,44 @@
+@model SimpleBlog.FrontEnd.ViewModels.PostDetailsViewModel
+@{
+    ViewData["Title"] = $"{Model.Post.Title} - Simple Blog";
+    var bgRand = new Random(0);
+}
+
+@if(Model.Post != null) 
+{
+    <h1>@Model.Post.Title</h1>
+    
+    <div class="row mb-1">
+        <div class="col-md-12">
+            <h2><img src="https://via.placeholder.com/1920x600/@bgRand.Next(100000, 1000000)/ffffff?text=@Model.Post.Title" alt="@Model.Post.Title" class="img-responsive" /></h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Model.Post.Body
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            @Model.Post.Body
+        </div>
+    </div>
+
+    <h2>What people say</h2>
+    foreach(var comment in Model.Comments) 
+    {
+        <div class="row">
+            <div class="col-md-1">
+                <img src="@comment.Avatar" alt="@comment.Name" class="img-responsive" />                
+            </div>
+            <div class="col-md-5">
+				<a href="mailto:@comment.Email;subject=Regarding your comment on {@Model.Post.Title}"><h3> @comment.Name </h3> </a>
+                <p>@comment.Body</p>
+            </div>
+        </div>
+    }
+} else {
+    <p>Post not found. Sorry.</p>
+}

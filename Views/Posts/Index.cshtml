@@ -1,0 +1,29 @@
+@model SimpleBlog.FrontEnd.ViewModels.PostsViewModel
+@{
+    ViewData["Title"] = "Our Simple Blog Posts";
+    var bgRand = new Random(0);
+}
+<h1>Our Posts</h1>
+@if(Model.Posts != null && Model.Posts.Count() > 0) 
+{
+    foreach(var post in Model.Posts) 
+    {
+        <div class="row m1emb">
+            <!--<a href="@Url.Action("Details", "Posts", new { id = post.Id, slug = post.Slug })">-->
+                <a href="/Posts/Details/@post.Id/@post.Slug">
+                <div class="col-md-4">
+                    <img src="@post.Image" alt="@post.Title" class="img-responsive" />
+                </div>
+                <div class="col-md-8">
+                    <h3>@post.Title - (Comments: @post.CommentCount)</h3>
+                </div>
+            </a>
+        </div>
+    }
+} else {
+    <div class="row">
+        <div class="col-md-12">
+            <p>There's nothing to see here.. :|</p>
+        </div>
+    </div>
+}

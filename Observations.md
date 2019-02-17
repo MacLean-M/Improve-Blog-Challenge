@@ -1,3 +1,5 @@
+NOTE: Disabled forcing of HTTPS in this commit ... need to re-enable.
+
 Observations regarding code quality (e.g. architectural improvements, recommendations, tech debt)
 -> Recommend to use standard code comment in XML format.
 -> Using ViewData may result in difficult to maintain code and the implmentation should be converted to a custom object model to avoid technical debt buildup.
